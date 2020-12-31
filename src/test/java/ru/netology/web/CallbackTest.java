@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class CallbackTest {
     @Test
-    void shouldValidTest() {
+    void shouldSuccessfulSendValidForm() {
         open("http://localhost:9999");
         $("[data-test-id=name] input").setValue("Иванов-Петров Иван");
         $("[data-test-id=phone] input").setValue("+79270000000");
@@ -19,7 +19,7 @@ class CallbackTest {
     }
 
     @Test
-    void shouldInvalidName() {
+    void shouldGetErrorMessageIfNameInvalid() {
         open("http://localhost:9999");
         $("[data-test-id=name] input").setValue("Ivanov Ivan");
         $("[data-test-id=agreement]").click();
@@ -28,7 +28,7 @@ class CallbackTest {
     }
 
     @Test
-    void shouldInvalidNameV2() {
+    void shouldGetErrorMessageIfNameEmpty() {
         open("http://localhost:9999");
         $("[data-test-id=name] input").setValue("");
         $("[data-test-id=agreement]").click();
@@ -37,7 +37,7 @@ class CallbackTest {
     }
 
     @Test
-    void shouldInvalidPhone() {
+    void shouldGetErrorMessageIfPhoneInvalid() {
         open("http://localhost:9999");
         $("[data-test-id=name] input").setValue("Иванов-Петров Иван");
         $("[data-test-id=phone] input").setValue("+792700000000");
@@ -47,7 +47,7 @@ class CallbackTest {
     }
 
     @Test
-    void shouldInvalidPhoneV2() {
+    void shouldGetErrorMessageIfPhoneEmpty() {
         open("http://localhost:9999");
         $("[data-test-id=name] input").setValue("Иванов-Петров Иван");
         $("[data-test-id=phone] input").setValue("");
