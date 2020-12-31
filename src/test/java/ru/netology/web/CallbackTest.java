@@ -62,7 +62,7 @@ class CallbackTest {
         $("[data-test-id=name] input").setValue("Иванов-Петров Иван");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $(".button").click();
-        $(".checkbox__text").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
+        $(".input_invalid").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
     }
 
 }
