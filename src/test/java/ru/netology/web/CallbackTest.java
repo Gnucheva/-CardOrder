@@ -2,8 +2,7 @@ package ru.netology.web;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -62,7 +61,9 @@ class CallbackTest {
         $("[data-test-id=name] input").setValue("Иванов-Петров Иван");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $(".button").click();
-        $(".input_invalid").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
+        $("[data-test-id='agreement'].input_invalid .checkbox__text")
+                .shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных" +
+                        " и разрешаю сделать запрос в бюро кредитных историй"));
     }
 
 }
